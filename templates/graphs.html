@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Graphs - Carbon Footprint Tool{% endblock %}
+
+{% block content %}
+<h2 style="color: white;">Your Carbon Footprint Overview</h2>
+
+<!-- Display Company Details -->
+<div class="company-details" style="color: white; margin-bottom: 20px;">
+    <h3>Company Name: {{ current_user.company_name }}</h3>
+    <p><strong>Username:</strong> {{ current_user.username }}</p>
+    <p><strong>Email:</strong> {{ current_user.email }}</p>
+    <p><strong>Total Carbon Footprint:</strong> {{ current_user.total_footprint }} kg CO₂</p>
+</div>
+
+<h4 style="color: white;">Energy Usage</h4>
+<img src="{{ energy_graph }}" alt="Energy Usage Graph"/>
+
+<h4 style="color: white;">Waste Management</h4>
+<img src="{{ waste_graph }}" alt="Waste Management Graph"/>
+
+<h4 style="color: white;">Business Travel Trends</h4>
+<img src="{{ travel_graph }}" alt="Business Travel Trends Graph"/>
+
+<!-- Download PDF Button -->
+<a href="{{ url_for('download_pdf') }}" class="btn btn-danger">Download PDF Report</a>
+{% endblock %}
